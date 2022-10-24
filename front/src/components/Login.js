@@ -1,6 +1,6 @@
 import React, {useState, useRef} from "react";
 import { useDispatch, useSelector} from "react-redux";
-import { Naviage, useNavigate} from 'react-router-dom';
+import { Navigate, useNavigate} from 'react-router-dom';
 
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
@@ -54,7 +54,7 @@ const Login = (props) => {
             dispatch(login(username, password))
                 .then(()=> {
                     navigate("/profile");
-                    window.location.reload():
+                    window.location.reload();
                 })
                 .catch(() => {
                     setLoading(false);
@@ -121,7 +121,7 @@ const Login = (props) => {
                             </div>
                         </div>
                     )}
-                    <CheckButton style{{ display: "none"}} ref={checkBtn} />
+                    <CheckButton style={{ display: "none"}} ref={checkBtn} />
                 </Form>
             </div>
         </div>
