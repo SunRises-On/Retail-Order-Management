@@ -24,6 +24,8 @@ import java.util.Set;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //changed
+    @Column(name = "user_id")
     private Long id;
 
     @NotBlank
