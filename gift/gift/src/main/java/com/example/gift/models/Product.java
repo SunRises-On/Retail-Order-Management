@@ -16,7 +16,7 @@ import javax.validation.constraints.Size;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "product_id")
+   // @Column(name = "product_id")
     private Long id;
 
     @NotBlank
@@ -31,12 +31,6 @@ public class Product {
 
     private String img;
 
-    private Integer boughtQuantity;
-
-    @ManyToOne (fetch = FetchType.LAZY)
-    @JoinColumn( name = "order_id")
-    @JsonBackReference
-    private Order order;
 
     public Product(){
 
@@ -90,12 +84,6 @@ public class Product {
         this.img = img;
     }
 
-    public Integer getBoughtQuantity() {
-        return boughtQuantity;
-    }
 
-    public void setBoughtQuantity(Integer boughtQuantity) {
-        this.boughtQuantity = boughtQuantity;
-    }
 }
 

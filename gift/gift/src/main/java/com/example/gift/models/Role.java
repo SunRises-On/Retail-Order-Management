@@ -8,7 +8,7 @@ public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     //changed
-    @Column(name = "role_id")
+   // @Column(name = "role_id")
     private Integer id;
 
     @Enumerated(EnumType.STRING)
