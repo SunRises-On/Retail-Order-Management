@@ -23,6 +23,6 @@ public class OrderDetails {
     @NotBlank
     private Integer priceEach;
 
-    
+
 
 }

@@ -7,7 +7,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table( name = "users" ,
+@Table( name = "product" ,
         uniqueConstraints = {
                 @UniqueConstraint(columnNames = "productName"),
                 @UniqueConstraint(columnNames = "img")
