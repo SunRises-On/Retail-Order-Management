@@ -1,6 +1,7 @@
 package com.example.gift.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -30,7 +31,6 @@ public class Product {
     private Integer buyPrice;
 
     private String img;
-
 
     public Product(){
 

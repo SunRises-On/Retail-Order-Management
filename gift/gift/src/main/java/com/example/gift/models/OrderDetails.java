@@ -1,10 +1,12 @@
 package com.example.gift.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-@Table( name = "order_details")
+@Table( name = "orderDetails")
 public class OrderDetails {
 
     @Id
@@ -12,10 +14,10 @@ public class OrderDetails {
     private Long id;
 
     @NotBlank
-    private String product_id;
+    private Integer product_id;
 
-    @NotBlank
-    private String order_id;
+  //  @NotBlank
+  //  private String order_id;
 
     @NotBlank
     private Integer quantityOrdered;
@@ -31,12 +33,14 @@ public class OrderDetails {
             referencedColumnName = "id",
             nullable = false)
     private Order orders;
+
+
     public OrderDetails(){}
 
-    public OrderDetails(Long id, String product_id, String order_id, Integer quantityOrdered, Integer priceEach) {
+    public OrderDetails(Long id, Integer product_id, Integer quantityOrdered, Integer priceEach) {
         this.id = id;
         this.product_id = product_id;
-        this.order_id = order_id;
+   //     this.order_id = order_id;
         this.quantityOrdered = quantityOrdered;
         this.priceEach = priceEach;
     }
@@ -49,21 +53,6 @@ public class OrderDetails {
         this.id = id;
     }
 
-    public String getProduct_id() {
-        return product_id;
-    }
-
-    public void setProduct_id(String product_id) {
-        this.product_id = product_id;
-    }
-
-    public String getOrder_id() {
-        return order_id;
-    }
-
-    public void setOrder_id(String order_id) {
-        this.order_id = order_id;
-    }
 
     public Integer getQuantityOrdered() {
         return quantityOrdered;
@@ -81,11 +70,21 @@ public class OrderDetails {
         this.priceEach = priceEach;
     }
 
+    public Integer getProduct_id() {
+        return product_id;
+    }
+
+    public void setProduct_id(Integer product_id) {
+        this.product_id = product_id;
+    }
+
     public Order getOrder() {
         return orders;
     }
 
-    public void setOrder(Order order) {
-        this.orders = order;
+    public void setOrder(Order orders) {
+        this.orders = orders;
     }
+
+
 }
