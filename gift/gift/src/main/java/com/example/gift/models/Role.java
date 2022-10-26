@@ -1,6 +1,8 @@
 package com.example.gift.models;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "roles")
@@ -15,10 +17,20 @@ public class Role {
     @Column(length=20)
     private ERole name;
 
+    @ManyToMany( fetch = FetchType.LAZY)
+    private Set<User> userSet = new HashSet<>();
     public Role(){}
 
     public Role (ERole name){
         this.name = name;
+    }
+
+    public Set<User> getUserSet() {
+        return userSet;
+    }
+
+    public void setUserSet(Set<User> userSet) {
+        this.userSet = userSet;
     }
 
     public Integer getId(){

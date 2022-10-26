@@ -1,12 +1,16 @@
 package com.example.gift.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**********
@@ -16,7 +20,7 @@ import java.util.Set;
 * */
 
 @Entity
-@Table( name = "users" ,
+@Table( name = "user" ,
         uniqueConstraints = {
             @UniqueConstraint(columnNames = "username"),
             @UniqueConstraint(columnNames = "email")
@@ -25,7 +29,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     //changed
-   // @Column(name = "user_id")
+    //@Column(name = "user_id")
     private Long id;
 
     @NotBlank
@@ -47,7 +51,13 @@ public class User {
                  inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles =new HashSet<>();
 
-
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY,
+            mappedBy = "user",
+            cascade = CascadeType.ALL,
+            targetEntity = Order.class
+    )
+    private List<Order> orders = new ArrayList<>();
     public User() {
 
     }
@@ -95,5 +105,13 @@ public class User {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 }
