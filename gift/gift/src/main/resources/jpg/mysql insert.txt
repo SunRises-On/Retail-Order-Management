@@ -1,0 +1,1 @@
+INSERT INTO sys.product VALUES (1,5,LOAD_FILE('C:\Users\jewel\Desktop\jpg\shirt.jpg'), 'shirt', '1000');
