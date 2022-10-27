@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.sql.Blob;
 
 @Entity
 @Table( name = "product" ,
@@ -30,13 +31,14 @@ public class Product {
     @NotBlank
     private Integer buyPrice;
 
-    private String img;
+    @Lob
+    private Blob img;
 
     public Product(){
 
     }
 
-    public Product(Long id, String productName, Integer quantity, Integer buyPrice, String img) {
+    public Product(Long id, String productName, Integer quantity, Integer buyPrice, Blob img) {
         this.id = id;
         this.productName = productName;
         this.quantity = quantity;
@@ -76,11 +78,11 @@ public class Product {
         this.buyPrice = buyPrice;
     }
 
-    public String getImg() {
+    public Blob getImg() {
         return img;
     }
 
-    public void setImg(String img) {
+    public void setImg(Blob img) {
         this.img = img;
     }
 
